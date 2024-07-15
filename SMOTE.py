@@ -17,9 +17,9 @@ import numpy as np
 # NOTE: No manual segregation of class label and attributes needed, algorithm pre-processes it automatically
 
 
-def augment(dataset, size=100, k=5):
+def augment(data_without_classes, classes, size=100, k=5):
     # need to separate the class label and the numerical data -- pre-processing stage:
-    data, c_label = [d[0:(len(d) - 1)] for d in dataset], dataset[0][3]
+    data, c_label = data_without_classes ,  classes
     n = size
 
     # if user chooses to synthesize less than the input data size:
@@ -71,4 +71,4 @@ def augment(dataset, size=100, k=5):
 
     # re-process the synthetic data by assigning class label and add it back to main dataset:
     sdata = [arr + [c_label] for arr in synthetic]
-    return dataset + sdata
+    return s_data 
